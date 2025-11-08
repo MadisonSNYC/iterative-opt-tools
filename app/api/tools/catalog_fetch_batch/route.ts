@@ -7,7 +7,9 @@ export async function POST(req: NextRequest) {
 
     // Defensive handling of Opal placeholder injection
     const cleanToken =
-      !pagination_token || pagination_token === "[[pagination_token]]"
+      !pagination_token ||
+      pagination_token === "null" ||
+      pagination_token === "[[pagination_token]]"
         ? undefined
         : pagination_token;
 
